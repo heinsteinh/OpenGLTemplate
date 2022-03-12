@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{46e6119d-00bf-4de7-8e25-4e8ca6f21bab}</ProjectGuid>
+    <RootNamespace>OpenGLTemplate</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)bin\$(ProjectName)-$(Configuration)-$(Platform)\</OutDir>
+    <IntDir>$(SolutionDir)bin-int\$(ProjectName)-$(Configuration)-$(Platform)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)bin\$(ProjectName)-$(Configuration)-$(Platform)\</OutDir>
+    <IntDir>$(SolutionDir)bin-int\$(ProjectName)-$(Configuration)-$(Platform)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>GLFW_INCLUDE_NONE;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(ProjectDir)vendor\include;$(ProjectDir)src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(ProjectDir)vendor\libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opengl32.lib;glfw3.lib;User32.lib;Gdi32.lib;Shell32.lib;</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>GLFW_INCLUDE_NONE;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(ProjectDir)vendor\include;$(ProjectDir)src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(ProjectDir)vendor\libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opengl32.lib;glfw3.lib;User32.lib;Gdi32.lib;Shell32.lib;</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Application.cpp" />
+    <ClCompile Include="src\Core\Log.cpp" />
+    <ClCompile Include="src\Main.cpp" />
+    <ClCompile Include="src\pch.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">pch.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="vendor\src\glad.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Application.h" />
+    <ClInclude Include="src\Core\Log.h" />
+    <ClInclude Include="src\pch.h" />
+    <ClInclude Include="vendor\include\entt\config\config.h" />
+    <ClInclude Include="vendor\include\entt\config\version.h" />
+    <ClInclude Include="vendor\include\entt\core\algorithm.hpp" />
+    <ClInclude Include="vendor\include\entt\core\attribute.h" />
+    <ClInclude Include="vendor\include\entt\core\family.hpp" />
+    <ClInclude Include="vendor\include\entt\core\fwd.hpp" />
+    <ClInclude Include="vendor\include\entt\core\hashed_string.hpp" />
+    <ClInclude Include="vendor\include\entt\core\ident.hpp" />
+    <ClInclude Include="vendor\include\entt\core\monostate.hpp" />
+    <ClInclude Include="vendor\include\entt\core\type_info.hpp" />
+    <ClInclude Include="vendor\include\entt\core\type_traits.hpp" />
+    <ClInclude Include="vendor\include\entt\core\utility.hpp" />
+    <ClInclude Include="vendor\include\entt\entity\actor.hpp" />
+    <ClInclude Include="vendor\include\entt\entity\entity.hpp" />
+    <ClInclude Include="vendor\include\entt\entity\fwd.hpp" />
+    <ClInclude Include="vendor\include\entt\entity\group.hpp" />
+    <ClInclude Include="vendor\include\entt\entity\handle.hpp" />
+    <ClInclude Include="vendor\include\entt\entity\helper.hpp" />
+    <ClInclude Include="vendor\include\entt\entity\observer.hpp" />
+    <ClInclude Include="vendor\include\entt\entity\pool.hpp" />
+    <ClInclude Include="vendor\include\entt\entity\registry.hpp" />
+    <ClInclude Include="vendor\include\entt\entity\runtime_view.hpp" />
+    <ClInclude Include="vendor\include\entt\entity\snapshot.hpp" />
+    <ClInclude Include="vendor\include\entt\entity\sparse_set.hpp" />
+    <ClInclude Include="vendor\include\entt\entity\storage.hpp" />
+    <ClInclude Include="vendor\include\entt\entity\utility.hpp" />
+    <ClInclude Include="vendor\include\entt\entity\view.hpp" />
+    <ClInclude Include="vendor\include\entt\entt.hpp" />
+    <ClInclude Include="vendor\include\entt\fwd.hpp" />
+    <ClInclude Include="vendor\include\entt\locator\locator.hpp" />
+    <ClInclude Include="vendor\include\entt\meta\container.hpp" />
+    <ClInclude Include="vendor\include\entt\meta\ctx.hpp" />
+    <ClInclude Include="vendor\include\entt\meta\factory.hpp" />
+    <ClInclude Include="vendor\include\entt\meta\internal.hpp" />
+    <ClInclude Include="vendor\include\entt\meta\meta.hpp" />
+    <ClInclude Include="vendor\include\entt\meta\pointer.hpp" />
+    <ClInclude Include="vendor\include\entt\meta\policy.hpp" />
+    <ClInclude Include="vendor\include\entt\meta\range.hpp" />
+    <ClInclude Include="vendor\include\entt\meta\resolve.hpp" />
+    <ClInclude Include="vendor\include\entt\meta\type_traits.hpp" />
+    <ClInclude Include="vendor\include\entt\platform\android-ndk-r17.hpp" />
+    <ClInclude Include="vendor\include\entt\process\process.hpp" />
+    <ClInclude Include="vendor\include\entt\process\scheduler.hpp" />
+    <ClInclude Include="vendor\include\entt\resource\cache.hpp" />
+    <ClInclude Include="vendor\include\entt\resource\fwd.hpp" />
+    <ClInclude Include="vendor\include\entt\resource\handle.hpp" />
+    <ClInclude Include="vendor\include\entt\resource\loader.hpp" />
+    <ClInclude Include="vendor\include\entt\signal\delegate.hpp" />
+    <ClInclude Include="vendor\include\entt\signal\dispatcher.hpp" />
+    <ClInclude Include="vendor\include\entt\signal\emitter.hpp" />
+    <ClInclude Include="vendor\include\entt\signal\fwd.hpp" />
+    <ClInclude Include="vendor\include\entt\signal\sigh.hpp" />
+    <ClInclude Include="vendor\include\glad\glad.h" />
+    <ClInclude Include="vendor\include\GLFW\glfw3.h" />
+    <ClInclude Include="vendor\include\GLFW\glfw3native.h" />
+    <ClInclude Include="vendor\include\KHR\khrplatform.h" />
+    <ClInclude Include="vendor\include\spdlog\async.h" />
+    <ClInclude Include="vendor\include\spdlog\async_logger.h" />
+    <ClInclude Include="vendor\include\spdlog\common.h" />
+    <ClInclude Include="vendor\include\spdlog\details\async_logger_impl.h" />
+    <ClInclude Include="vendor\include\spdlog\details\circular_q.h" />
+    <ClInclude Include="vendor\include\spdlog\details\console_globals.h" />
+    <ClInclude Include="vendor\include\spdlog\details\file_helper.h" />
+    <ClInclude Include="vendor\include\spdlog\details\fmt_helper.h" />
+    <ClInclude Include="vendor\include\spdlog\details\logger_impl.h" />
+    <ClInclude Include="vendor\include\spdlog\details\log_msg.h" />
+    <ClInclude Include="vendor\include\spdlog\details\mpmc_blocking_q.h" />
+    <ClInclude Include="vendor\include\spdlog\details\null_mutex.h" />
+    <ClInclude Include="vendor\include\spdlog\details\os.h" />
+    <ClInclude Include="vendor\include\spdlog\details\pattern_formatter.h" />
+    <ClInclude Include="vendor\include\spdlog\details\periodic_worker.h" />
+    <ClInclude Include="vendor\include\spdlog\details\registry.h" />
+    <ClInclude Include="vendor\include\spdlog\details\thread_pool.h" />
+    <ClInclude Include="vendor\include\spdlog\fmt\bin_to_hex.h" />
+    <ClInclude Include="vendor\include\spdlog\fmt\bundled\colors.h" />
+    <ClInclude Include="vendor\include\spdlog\fmt\bundled\core.h" />
+    <ClInclude Include="vendor\include\spdlog\fmt\bundled\format-inl.h" />
+    <ClInclude Include="vendor\include\spdlog\fmt\bundled\format.h" />
+    <ClInclude Include="vendor\include\spdlog\fmt\bundled\ostream.h" />
+    <ClInclude Include="vendor\include\spdlog\fmt\bundled\posix.h" />
+    <ClInclude Include="vendor\include\spdlog\fmt\bundled\printf.h" />
+    <ClInclude Include="vendor\include\spdlog\fmt\bundled\ranges.h" />
+    <ClInclude Include="vendor\include\spdlog\fmt\bundled\time.h" />
+    <ClInclude Include="vendor\include\spdlog\fmt\fmt.h" />
+    <ClInclude Include="vendor\include\spdlog\fmt\ostr.h" />
+    <ClInclude Include="vendor\include\spdlog\formatter.h" />
+    <ClInclude Include="vendor\include\spdlog\logger.h" />
+    <ClInclude Include="vendor\include\spdlog\sinks\android_sink.h" />
+    <ClInclude Include="vendor\include\spdlog\sinks\ansicolor_sink.h" />
+    <ClInclude Include="vendor\include\spdlog\sinks\base_sink.h" />
+    <ClInclude Include="vendor\include\spdlog\sinks\basic_file_sink.h" />
+    <ClInclude Include="vendor\include\spdlog\sinks\daily_file_sink.h" />
+    <ClInclude Include="vendor\include\spdlog\sinks\dist_sink.h" />
+    <ClInclude Include="vendor\include\spdlog\sinks\msvc_sink.h" />
+    <ClInclude Include="vendor\include\spdlog\sinks\null_sink.h" />
+    <ClInclude Include="vendor\include\spdlog\sinks\ostream_sink.h" />
+    <ClInclude Include="vendor\include\spdlog\sinks\rotating_file_sink.h" />
+    <ClInclude Include="vendor\include\spdlog\sinks\sink.h" />
+    <ClInclude Include="vendor\include\spdlog\sinks\stdout_color_sinks.h" />
+    <ClInclude Include="vendor\include\spdlog\sinks\stdout_sinks.h" />
+    <ClInclude Include="vendor\include\spdlog\sinks\syslog_sink.h" />
+    <ClInclude Include="vendor\include\spdlog\sinks\wincolor_sink.h" />
+    <ClInclude Include="vendor\include\spdlog\spdlog.h" />
+    <ClInclude Include="vendor\include\spdlog\tweakme.h" />
+    <ClInclude Include="vendor\include\spdlog\version.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
