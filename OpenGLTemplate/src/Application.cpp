@@ -17,8 +17,9 @@ void Application::Run()
     Log::Init();
     if (!glfwInit())
         Log::Fatal("Unable to initalize GLFW!");
+
     glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
-    m_WindowHandle = glfwCreateWindow(800, 600, "OpenGLRandomTesting", nullptr, nullptr);
+    m_WindowHandle = glfwCreateWindow(1280, 720, "OpenGLRandomTesting", nullptr, nullptr);
     glfwMakeContextCurrent(m_WindowHandle);
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
         Log::Fatal("Unable to initalize GLAD!");
